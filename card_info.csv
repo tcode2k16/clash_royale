@@ -1,0 +1,1 @@
+card name,Cost (elixir/10) 0.1-0.9,Count (number/100) 0.01-0.99,Deploy Time (sec/10) 0.1/0.9,Hit speed (sec/10) 0.1-0.9,Range (block/10) 0.1-0.9,Speed 0.2=slow 0.4=Medium 0.6=Fast 0.8=Very fast,Transport 1st ground,Transport 2nd air,Target 1st ground,Target 2nd air,Target 3rd building,Host Damage (1/10000),Host Area Damage (1/10000),Host Hitpoints (1/10000)
