@@ -1,5 +1,5 @@
 {
-  "name": "clash_royale_machine_learning",
+  "name": "clash_royale",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,8 +10,6 @@
   "license": "ISC",
   "dependencies": {
     "jsonfile": "^2.4.0",
-    "lodash": "^4.16.4",
-    "request": "^2.75.0",
     "synaptic": "^1.0.8"
   }
 }
