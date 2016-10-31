@@ -1,5 +1,8 @@
-var cards = ["Knight","Bomber","Archers","Spear_Goblins","Goblins","Skeletons","Minions","Barbarians","Minion_Horde","Fire_Spirits","Royal_Giant","Ice_Spirit","Giant","Musketeer","Mini_P.E.K.K.A.","Valkyrie","Hog_Rider","Wizard","Mega_Minion","Three_Musketeers","Ice_Golem","Baby_Dragon","Prince","Witch","Skeleton_Army","Giant_Skeleton","Balloon","P.E.K.K.A.","Golem","Dark_Prince","Guards","Bowler","Inferno_Dragon","Lava_Hound","Ice_Wizard","Sparky","Miner","Princess","Lumberjack"];
+// var cards = ["Knight","Bomber","Archers","Spear_Goblins","Goblins","Skeletons","Minions","Barbarians","Minion_Horde","Fire_Spirits","Royal_Giant","Ice_Spirit","Giant","Musketeer","Mini_P.E.K.K.A.","Valkyrie","Hog_Rider","Wizard","Mega_Minion","Three_Musketeers","Ice_Golem","Baby_Dragon","Prince","Witch","Skeleton_Army","Giant_Skeleton","Balloon","P.E.K.K.A.","Golem","Dark_Prince","Guards","Bowler","Inferno_Dragon","Lava_Hound","Ice_Wizard","Sparky","Miner","Princess","Lumberjack"];
+// var cards = ["Knight","Bomber","Archers","Spear_Goblins","Goblins"];
 // var cards = ["Witch"];
+var obj = {"Troop":["Knight","Bomber","Archers","Spear_Goblins","Goblins","Skeletons","Minions","Barbarians","Minion_Horde","Fire_Spirits","Royal_Giant","Ice_Spirit","Giant","Musketeer","Mini_P.E.K.K.A.","Valkyrie","Hog_Rider","Wizard","Mega_Minion","Three_Musketeers","Ice_Golem","Baby_Dragon","Prince","Witch","Skeleton_Army","Giant_Skeleton","Balloon","P.E.K.K.A.","Golem","Dark_Prince","Guards","Bowler","Inferno_Dragon","Lava_Hound","Ice_Wizard","Sparky","Miner","Princess","Lumberjack"],"Spell":["Arrows","Zap","Fireball","Rocket","Lightning","Goblin_Barrel","Rage","Freeze","Mirror","Poison","Graveyard","The_Log"],"Building":["Cannon","Tesla","Mortar","Goblin_Hut","Bomb_Tower","Tombstone","Barbarian_Hut","Inferno_Tower","Furnace","Elixir_Collector","X-Bow"]};
+var cards = [...obj["Troop"],...obj["Spell"],...obj["Building"]];
 var output = {};
 var base_url = "http://clashroyale.wikia.com/wiki/";
 
@@ -43,10 +46,14 @@ function get_page(count,output,callback) {
 
 
     output[cards[count]] = zipobj2d(raw_list);
-    output[cards[count]]["Type"]="Troop";
+
+    output[cards[count]]["Type"].replace(/>(.{0,}?)</g,(_,item) => {
+        output[cards[count]]["Type"] = item;
+    });
+
     var rarity = output[cards[count]]["Rarity"].match(/d;\">.{0,}?<\//g)[0];
     output[cards[count]]["Rarity"] = rarity.substring(4,rarity.length-2);
-    output[cards[count]]["Target"] = output[cards[count]]["Target"].split(" &amp; ");
+    if (output[cards[count]]["Target"]) output[cards[count]]["Target"] = output[cards[count]]["Target"].split(" &amp; ");
 
     //t2
     var table2 = innerDoc.getElementById('unit-statistics-table');
