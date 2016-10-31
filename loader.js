@@ -6,6 +6,7 @@ function objMap(obj,func) {
   Object.keys(obj).map(func);
 }
 
+//todo mirror_fix
 
 const normal_list = ["Deploy Time","Hit Speed","Rage Duration","Spawn Speed","Freeze Duration","Cost"];
 const need_change_list = {
@@ -51,8 +52,10 @@ const need_change_list = {
     return arr;
   }
 }
+
+
 const jsonfile = require('jsonfile');
-let list = jsonfile.readFileSync('./data/card_stats_int_v.json');
+let list = jsonfile.readFileSync('./data/card_stats.json');
 
 
 

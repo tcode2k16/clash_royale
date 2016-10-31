@@ -22,9 +22,9 @@ function getCards(bonds) {
 
 
 var final = {
-    troops: [2,5],
-    spells: [6,9],
-    buildings: [10,12]
+    Troop: [2,5],
+    Spell: [6,9],
+    Building: [10,12]
 };
 
 for (var each in final)
